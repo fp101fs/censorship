@@ -12,7 +12,6 @@ export default function Home() {
   );
   const [lastUpdated, setLastUpdated] = useState('—');
 
-  const API_ROOT = 'https://api.ooni.io/api/v1/measurements';
   const limit = 200;
 
   const extractDomain = (input) => {
@@ -82,7 +81,7 @@ export default function Home() {
     );
 
     try {
-      const url = `${API_ROOT}?confirmed=true&limit=${limit}`;
+      const url = `/api/ooni?limit=${limit}`;
       const r = await fetch(url);
       if (!r.ok) throw new Error('API error: ' + r.status);
       const data = await r.json();
